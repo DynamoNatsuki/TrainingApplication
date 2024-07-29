@@ -1,0 +1,38 @@
+﻿@model TrainingApplication.Models.CreateTrainingViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create Training</h1>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="ExerciseId" class="control-label">Select exercise</label>
+        <select asp-for="ExerciseId" class="form-control" asp-items="ViewBag.Exercises"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Date" class="control-label">Date of training</label>
+        <input asp-for="Date" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="DistanceOrWeight" class="control-label">Distance/Weight</label>
+        <input asp-for="DistanceOrWeight" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Units" class="control-label">Units/Measurement</label>
+        <select asp-for="Units" class="form-control" asp-items="ViewBag.ValidUnits"></select>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

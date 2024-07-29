@@ -1,0 +1,39 @@
+﻿@model IEnumerable<TrainingApplication.Models.TrainingViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Exercise Name</th>
+            <th>Date</th>
+            <th>Distance/Weight</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Units)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@item.ExerciseName</td>
+            <td>@item.Date</td>
+            <td>@item.DistanceOrWeight</td>
+            <td>@item.Units</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id.ToString() }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id.ToString() }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id.ToString() })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
